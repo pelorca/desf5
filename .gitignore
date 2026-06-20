@@ -3,4 +3,10 @@ target/
 .idea/
 *.iml
 .vscode/
+.claude/
+docs/
 HELP.md
+.project
+.classpath
+.factorypath
+.settings/
