@@ -1,5 +1,6 @@
 package br.com.pelorca.desafio.msdesafio.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.validation.FieldError;
@@ -21,6 +22,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EmailDuplicadoException.class)
     public ProblemDetail handleEmailDuplicado(EmailDuplicadoException ex) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ProblemDetail handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        return ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT, "Violação de integridade dos dados (ex.: email já cadastrado)");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
