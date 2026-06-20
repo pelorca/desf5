@@ -48,7 +48,7 @@ src/main/java/br/com/pelorca/desafio/msdesafio/
 ├── dto/          # Contratos de entrada/saída da API
 ├── mapper/       # Conversão Entity <-> DTO
 ├── exception/    # Exceções de domínio e handler global de erro
-└── config/       # Configurações (OpenAPI, etc.)
+└── config/       # Configurações (OpenAPI, Jackson snake_case)
 ```
 
 Diagrama arquitetural completo em [`docs/architecture.md`](docs/architecture.md).

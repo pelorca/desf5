@@ -25,8 +25,7 @@ flowchart LR
     Controller["ClienteController\n(roteamento HTTP, validacao @Valid)"] --> Service
     Service["ClienteService\n(regra de negocio, transacao)"] --> Repository
     Repository["ClienteRepository\n(Spring Data JPA)"] --> DB[("H2 Database\n(embedded)")]
-    Controller -. usa .-> Mapper["ClienteMapper"]
-    Service -. usa .-> Mapper
+    Service -. usa .-> Mapper["ClienteMapper"]
     GlobalExceptionHandler["GlobalExceptionHandler\n(@RestControllerAdvice)"] -. intercepta erros .-> Controller
 ```
 
@@ -39,5 +38,9 @@ flowchart LR
 - **DTO**: representa o contrato exposto na API (`ClienteRequestDTO` para entrada, `ClienteResponseDTO` para saída), independente do schema interno.
 - **Mapper**: converte Entity↔DTO, evitando que Controller/Service repitam lógica de tradução.
 - **GlobalExceptionHandler**: centraliza tratamento de erro, traduz exceções de domínio em respostas HTTP padronizadas (`ProblemDetail`, RFC 9457).
+
+## Convenção de JSON
+
+Toda a API serializa/desserializa em **snake_case** (configurado app-wide via `JacksonConfig`, usando o `JsonMapperBuilderCustomizer` do Spring Boot 4 sobre o `JsonMapper` do Jackson 3). Hoje os campos de `Cliente` são todos de uma palavra (`nome`, `email`, `telefone`, `endereco`), então isso não é visível no payload atual — mas qualquer campo futuro com nome composto (ex.: `dataNascimento`) sairá como `data_nascimento`.
 
 > Este diagrama é escrito em Mermaid. Para abrir/editar no draw.io: **Extras → Edit Diagram**, cole o bloco Mermaid correspondente, e o draw.io renderiza o diagrama nativamente.
