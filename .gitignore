@@ -6,3 +6,7 @@ target/
 .claude/
 docs/
 HELP.md
+.project
+.classpath
+.factorypath
+.settings/
