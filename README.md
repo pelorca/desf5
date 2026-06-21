@@ -51,4 +51,4 @@ src/main/java/br/com/pelorca/desafio/msdesafio/
 └── config/       # Configurações (OpenAPI, Jackson snake_case)
 ```
 
-Diagrama arquitetural completo em [`docs/architecture.md`](docs/architecture.md).
+Diagrama arquitetural completo em [`Arquitetura.md`](Arquitetura.md).
